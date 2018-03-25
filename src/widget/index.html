@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="buildfire" content="disableTheme">
+
+    <!-- JS -->
+	<script src="../../../scripts/buildfire.js"></script>
+    <style>
+        html,body {
+            cursor: default;
+            font-size: 100%;
+            user-select: none;
+            text-size-adjust: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            -webkit-appearance: none;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .hidden{
+            display: none;
+        }
+
+        .area {
+            position: absolute;
+            top:0px;
+            left: 0px;
+            width: 100vh;
+            height: 100vw;
+            -webkit-transform:rotate(90deg);
+            transform: rotate(90deg);
+            -webkit-origin: 50vw 50vw;
+            transform-origin: 50vw 50vw;
+
+        }
+
+        /* entire container, keeps perspective */
+        .card-container {
+            margin: 0 auto;
+            perspective: 1000px;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            width: 100%;
+            padding-top: 1vw;
+            padding-bottom: 1vw;
+            padding-left: 1vh;
+            padding-right: 1vh;
+        }
+
+        .card {
+            position: relative;
+            -webkit-transition: .6s;
+            transition: .6s;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            width: 98vh;
+            height: 98vw;
+            text-align: center;
+
+        }
+
+        .card .heroImage{
+            max-width: 98%;
+            max-height: 75vw;
+            border-radius: 5px;
+
+        }
+
+        /* flip class added with javascript on click */
+        .card-container.flip .front {
+            -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+        }
+        .card-container.flip .back {
+            -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+        }
+
+        .card .front,
+        .card .back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            border-radius: 10px;
+            background-color: #4472b9;
+            backface-visibility: hidden;
+            -webkit-transition: .6s;
+            transition: .6s;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+        }
+
+        .card .front {
+            /* z-index so front card stays above back */
+            z-index: 2;
+            -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+        }
+
+        .card .back {
+            background-color: #be4c39;
+            -webkit-transform: rotateY(-180deg);
+            transform: rotateY(-180deg);
+        }
+
+
+        .slideOut{
+            animation: slideOutFrames .6s ease-in-out;
+        }
+
+        @keyframes slideOutFrames {
+            0%{margin-left: 0%;opacity: 1; }
+            50%{margin-left: -100% ;opacity: 1;}
+            51%{margin-left: 100% ;opacity: 1;}
+            100%{margin-left: 0%;opacity: 1; }
+        }
+        /* vertical flip */
+
+        .card.vertical .front {
+            background-color: #4ca454;
+        }
+
+        .card.vertical .back {
+            background-color: #cd6f0f;
+        }
+
+        .card.vertical .back {
+            -webkit-transform: rotateX(180deg);
+            transform: rotateX(180deg);
+        }
+
+        .card-container.flip .vertical .front {
+            -webkit-transform: rotateX(-180deg);
+            transform: rotateX(-180deg);
+        }
+        .card-container.flip .vertical .back {
+            -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+        }
+
+        .logo{
+            z-index: 10;
+            width: 25vw;
+            -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+        }
+
+        h1, p {
+            text-align: center;
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: normal;
+            margin-bottom: 0;
+        }
+        p {
+            font-size: 14px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="area" >
+        <div class="card-container" >
+            <div class="card vertical">
+
+                <div class="front">
+
+                </div>
+                <div class="back">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <img class="logo" src="">
+
+</body>
+</html>
